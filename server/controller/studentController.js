@@ -18,7 +18,7 @@ module.exports.createStudent = async (req, res) => {
     }
     const newStudent = new Student({ name, stClass, school, feesamount });
     await newStudent.save();
-    res.status(201).json({ message: "Student created successfully" });
+    res.status(200).json({ message: "Student created successfully" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

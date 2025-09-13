@@ -22,6 +22,10 @@ const studentSchema = new mongoose.Schema({
         type: String,
         default: 'pending',
     },
+    notes:{
+        type: String,
+        default: 'N/A',
+    },
     date:{
         type: String,
         default: () => dateTime().date,
