@@ -16,7 +16,7 @@ module.exports.createStudent = async (req, res) => {
     if (!name || !stClass || !school || !feesamount) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    const newStudent = new Student({ name, stClass, school, feesamount });
+    const newStudent = new Student({ name, stClass, school, feesamount, note });
     await newStudent.save();
     res.status(200).json({ message: "Student created successfully" });
   } catch (error) {
@@ -26,10 +26,10 @@ module.exports.createStudent = async (req, res) => {
 
 module.exports.updateStatus = async (req, res) => {
   const { id } = req.params;
-  const { status } = req.body;
+  const { status,note } = req.body;
   const{date} = dateTime();
   try {
-    const updatedStudent = await Student.findByIdAndUpdate({ _id: id }, { status,date }, { new: true });
+    const updatedStudent = await Student.findByIdAndUpdate({ _id: id }, { status,note,date }, { new: true });
     if (!updatedStudent) return res.status(404).json({ error: "Student not found" });
     res.status(200).json({ message: "Status updated successfully", student: updatedStudent });
   } catch (error) {

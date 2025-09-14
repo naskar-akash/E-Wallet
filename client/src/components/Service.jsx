@@ -28,7 +28,7 @@ export async function getAllStudents() {
 }
 
 //Update a student payment status
-export async function updateStudentStatus(id, status) {
+export async function updateStudent(id, status) {
     try {
         const data = qs.stringify({status});
         const response = await axios.put(`${SERVER_URL}/students/update/${id}`, data, {
