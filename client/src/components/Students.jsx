@@ -6,11 +6,12 @@ import {StudentContext} from "./StudentContext"
 
 const Students = () => {
   const [students, setStudents] = useState([]);
-  const [filterStudents, setFilterStudents] = useState([]);
+  const [nameFilter, setNameFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all")
     const navigate = useNavigate();
 
   return (
-    <StudentContext.Provider value={{students,setStudents,filterStudents,setFilterStudents}}>
+    <StudentContext.Provider value={{students,setStudents,nameFilter,setNameFilter,statusFilter,setStatusFilter}}>
     <div className='w-full min-h-screen flex flex-col py-5 px-10 bg-gradient-to-tr from-blue-950 to-pink-900'>
       <div className='w-full flex justify-start mb-5'>
       <button onClick={() => navigate(-1)} className='px-3 py-2 bg-emerald-600 text-white rounded-md hover:bg-emerald-500 transition-all hover:cursor-pointer'>Back</button>

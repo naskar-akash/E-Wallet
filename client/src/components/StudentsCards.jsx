@@ -4,7 +4,7 @@ import FilterStudents from "./FilterStudents";
 import {useStudentContext} from "./StudentContext"
 
 const StudentsCards = () => {
-  const {students, setStudents} = useStudentContext();
+  const {students,setStudents,nameFilter,statusFilter} = useStudentContext();
 
   useEffect(() => {
     async function fetchStudents() {
@@ -18,6 +18,8 @@ const StudentsCards = () => {
     fetchStudents();
   }, []);
 
+  const finalStudents = nameFilter.length > 0 || statusFilter !== "all" ? (statusFilter !== "all" ? statusFilter : nameFilter) : students;
+
   return (
     <div className="w-full min-h-screen flex flex-row gap-4 my-4 mx-2 p-4">
       <div className="w-[22%] border-r-2 border-gray-500 pr-4">
@@ -25,8 +27,8 @@ const StudentsCards = () => {
         <FilterStudents/>
       </div>
       <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.isArray(students) && students.length > 0 ? (
-          students.map((student, index) => {
+        {Array.isArray(finalStudents) && finalStudents.length > 0 ? (
+          finalStudents.map((student, index) => {
             return (
               <div key={index} className="flex flex-col bg-gradient-to-bl from-cyan-300 via-yellow-200 to-teal-500 rounded-xl p-5 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-transform duration-150">
                 <div className="mb-4">
