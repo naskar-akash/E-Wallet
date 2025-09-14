@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { getAllStudents } from "./Service";
 import FilterStudents from "./FilterStudents";
+import {useStudentContext} from "./StudentContext"
 
 const StudentsCards = () => {
-  const [students, setStudents] = useState([]);
+  const {students, setStudents} = useStudentContext();
 
   useEffect(() => {
     async function fetchStudents() {
@@ -53,7 +54,7 @@ const StudentsCards = () => {
             );
           })
         ) : (
-          <div className="text-2xl flex justify-center items-center text-gray-600 col-span-full">No students found</div>
+          <div className="text-4xl flex justify-center items-start text-gray-600 font-semibold col-span-full">No students found</div>
         )}
       </div>
     </div>
