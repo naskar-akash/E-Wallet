@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import AddStudents from './AddStudents';
 import StudentsCards from './StudentsCards';
 import {StudentContext} from "./StudentContext"
+import Footer from './Footer';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
@@ -22,6 +23,7 @@ const Students = () => {
       </div>
         {/*cards*/}
         <StudentsCards />
+        <Footer/>
     </div>
     </StudentContext.Provider>
   )

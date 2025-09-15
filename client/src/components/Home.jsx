@@ -5,7 +5,7 @@ const Home = () => {
     const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-tr from-blue-900 via-pink-700 to-purple-900 animate-fade-in">
+    <div className="px-10 min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-tr from-blue-900 via-pink-700 to-purple-900 animate-fade-in">
       <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-lime-300 via-pink-400 to-cyan-300 mb-8 animate-bounce">
         Welcome to E-Wallet
       </h1>
@@ -14,7 +14,7 @@ const Home = () => {
       </p>
       <button
         onClick={() => navigate("/Students")}
-        className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-pink-500 text-white text-2xl font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-glow"
+        className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-pink-600 text-white text-2xl font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-glow"
       >
         Get Started
       </button>

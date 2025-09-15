@@ -56,7 +56,7 @@ const AddStudents = () => {
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-40">
         <form
-          className="flex flex-col w-full max-w-md bg-white px-6 py-2 rounded-lg shadow-lg"
+          className="flex flex-col w-[85vw] max-w-md bg-white px-4 py-2 sm:p-6 rounded-lg shadow-lg"
           onSubmit={handleSubmit(onSubmit)}
           method="post"
         >
@@ -69,8 +69,8 @@ const AddStudents = () => {
               ×
             </button>
           </div>
-          <div className="flex flex-row gap-6 mb-5">
-            <div className="flex flex-col">
+  
+            <div className="flex flex-col gap-2 mb-5">
               <label className="mb-2 text-lg font-bold">Name:*</label>
               <input
                 className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
@@ -85,10 +85,11 @@ const AddStudents = () => {
                 </div>
               )}
             </div>
-            <div className="flex justify-center items-center mt-6">
-              <label className="mb-2 text-lg font-bold mt-2">Class:*</label>
+
+            <div className="flex flex-col gap-2 mb-5">
+              <label className="mb-2 text-lg font-bold">Class:*</label>
               <select
-                className="bg-zinc-200 rounded-md mx-3 my-2 p-1 outline-none"
+                className="bg-zinc-200 rounded-md p-1 outline-none"
                 {...register("stClass")}
               >
                 <option value="VIII">VIII</option>
@@ -98,8 +99,8 @@ const AddStudents = () => {
                 <option value="XII">XII</option>
               </select>
             </div>
-          </div>
-          <div className="flex flex-col mb-5">
+
+          <div className="flex flex-col gap-2 mb-5">
             <label className="mb-2 text-lg font-bold">School:*</label>
             <input
               className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
@@ -115,8 +116,7 @@ const AddStudents = () => {
             )}
           </div>
 
-          <div className="flex flex-row gap-8 mb-5">
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-2 mb-5">
               <label className="mb-2 text-lg font-bold">Fees Amount:*</label>
               <input
                 className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
@@ -131,18 +131,19 @@ const AddStudents = () => {
                 </div>
               )}
             </div>
-            <div className="flex justify-center items-center mt-6">
-              <label className="mb-2 text-lg font-bold mt-2">Status:</label>
+
+            <div className="flex flex-col gap-2 mb-5">
+              <label className="mb-2 text-lg font-bold">Status:</label>
               <select
-                className="bg-zinc-200 rounded-md mx-3 my-2 p-1 outline-none"
+                className="bg-zinc-200 rounded-md p-1 outline-none"
                 {...register("status")}
               >
                 <option value="pending">pending</option>
                 <option value="paid">paid</option>
               </select>
             </div>
-          </div>
-          <div className="flex flex-col mb-5">
+
+          <div className="flex flex-col gap-2 mb-5">
             <label className="mb-2 text-lg font-bold">Special Notes:</label>
             <input
               className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
@@ -150,9 +151,11 @@ const AddStudents = () => {
               {...register("notes")}
             />
           </div>
+
           <input
             className="px-3 py-2 mb-5 bg-blue-600 rounded-md text-white text-bold hover:cursor-pointer hover:bg-blue-500"
             type="submit"
+            value="Add Student"
           />
         </form>
         </div>
