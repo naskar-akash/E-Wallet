@@ -14,7 +14,7 @@ console.log(`Environment: ${process.env.NODE_ENV}`);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors({origin: process.env.FRONTEND_URI ,credentials: true}));
+app.use(cors({origin: process.env.FRONTEND_URL ,credentials: true}));
 app.use(bodyParser.json());
 
 
