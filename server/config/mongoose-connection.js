@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const mongodbURI =
-  process.env.MONGOBD_URI;
+  `${process.env.MONGOBD_URI}/Locker`;
 
 (async () => {
   try {
