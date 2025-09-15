@@ -24,7 +24,7 @@ const studentSchema = new mongoose.Schema({
     },
     notes:{
         type: String,
-        default: 'N/A',
+        default: 'none',
     },
     date:{
         type: String,

@@ -136,9 +136,9 @@ const StudentsCards = () => {
                     {student.date}
                   </span>
                 </div>
-                <div className="text-sm font-bold text-pink-500">
+                <div className="text-sm font-semibold text-gray-700">
                   <span className="font-bold text-md text-red-600">Note:</span>{" "}
-                  {student.note}
+                  {student.notes}
                 </div>
               </div>
             );

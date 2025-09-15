@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { CiEdit } from "react-icons/ci";
 import { useForm } from "react-hook-form";
 import { updateStudent } from './Service';
@@ -10,8 +10,28 @@ const [open, setOpen] = useState(false)
   const {
     register,
     handleSubmit,
-    formState: { errors },reset
-  } = useForm();
+    formState: { errors },
+    reset,
+  } = useForm({
+    defaultValues: {
+      status: "",
+    },
+  });
+
+    // when modal opens, load student data into form
+  useEffect(() => {
+    if (open && student) {
+      reset({
+        status: student.status,
+        notes: student.notes,
+      });
+    }
+  }, [open, student, reset]);
+
+  const handleClose = () => {
+    setOpen(!open);
+    reset();
+  };
 
 const onSubmit = async (data) => {
     try {
@@ -44,7 +64,7 @@ const onSubmit = async (data) => {
             <button
               type="button"
               className="p-2 text-2xl font-bold text-white"
-              onClick={() => setOpen(!open)}
+              onClick={handleClose}
             >
               ×
             </button>
@@ -52,7 +72,7 @@ const onSubmit = async (data) => {
 
           <div className="flex flex-row gap-8 mb-5">
             <div className="flex justify-center items-center mt-6">
-              <label className="mb-2 text-lg font-bold mt-2">Status:</label>
+              <label className="mb-2 text-lg text-white/60 font-bold mt-2">Status:</label>
               <select
                 className="bg-zinc-200 rounded-md mx-3 my-2 p-1 outline-none"
                 {...register("status")}
@@ -63,17 +83,17 @@ const onSubmit = async (data) => {
             </div>
           </div>
           <div className="flex flex-col mb-5">
-            <label className="mb-2 text-lg font-bold">Special Notes:</label>
+            <label className="mb-2 text-lg text-white/60 font-bold">Special Notes:</label>
             <input
               className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
               type="text"
-              value={student.note}
+              placeholder="Add any special notes here"
               {...register("notes")}
             />
           </div>
           <input
             className="px-3 py-2 mb-5 bg-blue-600 rounded-md text-white text-bold hover:cursor-pointer hover:bg-blue-500"
-            type="submit"
+            type="submit" value="Update"
           />
         </form>
         </div>

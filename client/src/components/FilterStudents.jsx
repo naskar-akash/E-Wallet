@@ -25,7 +25,7 @@ const FilterStudents = () => {
       </div>
 
       <div className="flex flex-col gap-2 mb-4">
-        <h2 className="text-xl text-gray-100 mb-2">Filter by Class:</h2>
+        <h2 className="text-xl text-gray-100 mb-2">Filter by Status:</h2>
         <select
           name="statusFilter"
           value={statusFilter}

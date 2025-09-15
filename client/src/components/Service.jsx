@@ -28,9 +28,9 @@ export async function getAllStudents() {
 }
 
 //Update a student payment status
-export async function updateStudent(id, status) {
+export async function updateStudent(id, status, notes) {
     try {
-        const data = qs.stringify({status});
+        const data = qs.stringify({status,notes});
         const response = await axios.put(`${SERVER_URL}/students/update/${id}`, data, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
