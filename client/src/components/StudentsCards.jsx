@@ -36,7 +36,8 @@ const StudentsCards = () => {
   }, []);
 
   //Apply Filters
-  const finalStudents = students.filter((student) => {
+  const finalStudents = Array.isArray(students) 
+  ? students.filter((student) => {
     const matchesName = student.name
       .toLowerCase()
       .includes(nameFilter.toLowerCase());
@@ -44,7 +45,8 @@ const StudentsCards = () => {
       ? student.status.toLowerCase() === statusFilter.toLowerCase()
       : true;
     return matchesName && matchesStatus;
-  });
+  })
+  : [];
 
   return (
     <div className="w-full min-h-screen flex flex-row gap-4 my-4 p-2">
@@ -93,7 +95,7 @@ const StudentsCards = () => {
         </div>
       )}
       <div className="flex-1 grid grid-cols-1 grid-rows-3 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.isArray(finalStudents) && finalStudents.length > 0 ? (
+        {finalStudents.length > 0 ? (
           finalStudents.map((student, index) => {
             return (
               <div
