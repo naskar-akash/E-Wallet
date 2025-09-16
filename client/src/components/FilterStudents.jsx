@@ -1,13 +1,15 @@
 import React from "react";
 import { useStudentContext } from "./StudentContext";
+import { set } from "react-hook-form";
 
 const FilterStudents = () => {
-  const { nameFilter, setNameFilter, statusFilter, setStatusFilter } =
+  const { nameFilter, setNameFilter, statusFilter, setStatusFilter,setFilterIcon } =
     useStudentContext();
 
   const handleRemoveFilter = () => {
     setNameFilter("");
     setStatusFilter("");
+    setFilterIcon(false);
   };
 
   return (

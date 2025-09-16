@@ -27,7 +27,7 @@ const AddStudents = () => {
         data.notes
       );
       showAlert(response, "success", "error");
-      setOpen(!open);
+      setOpen(!open); 
     } catch (error) {
       showAlert(error.response || error, "success", "error");
     }

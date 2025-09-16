@@ -9,9 +9,8 @@ import Delete from "./Delete";
 
 const StudentsCards = () => {
   const { serverMsg, status, showAlert } = AlertMsg(2);
-  const [filterIcon, setFilterIcon] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 768);
-  const { students, setStudents, nameFilter, statusFilter } =
+  const { students, setStudents, nameFilter, statusFilter,filterIcon,setFilterIcon } =
     useStudentContext();
 
   // Listen to window resize
@@ -76,7 +75,6 @@ const StudentsCards = () => {
               ? "flex w-[22%] max-h-[500px] sticky top-8"
               : "fixed inset-0 z-50 flex items-center justify-center bg-black/10 bg-opacity-40"
           }
-          onClick={() => setFilterIcon(false)}
         >
           <div className="relative bg-black/30 rounded-xl shadow-lg p-6 w-[320px]">
             {!isLargeScreen && (
