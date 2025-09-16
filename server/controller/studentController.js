@@ -12,11 +12,11 @@ module.exports.getStudent = async (req, res) => {
 
 module.exports.createStudent = async (req, res) => {
   try {
-    const { name, stClass, school, feesamount } = req.body;
+    const { name, stClass, school, feesamount,status,notes } = req.body;
     if (!name || !stClass || !school || !feesamount) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    const newStudent = new Student({ name, stClass, school, feesamount });
+    const newStudent = new Student({ name, stClass, school, feesamount,status,notes });
     await newStudent.save();
     res.status(200).json({ message: "Student created successfully" });
   } catch (error) {

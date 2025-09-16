@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+const SERVER_URL = import.meta.env.VITE_API_URL;
 
 //Add a new student
 export async function addStudents(name, stClass, school, feesamount, status, notes) {

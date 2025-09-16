@@ -7,8 +7,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const studentRoute = require('./routes/studentRoute');
-
-console.log(`Environment: ${process.env.NODE_ENV}`);
  
 //Middlewares
 app.use(express.json());
