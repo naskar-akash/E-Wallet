@@ -14,11 +14,9 @@ const Delete = ({ id,showAlert }) => {
   };
 
   return (
-    <div>
       <button onClick={handleDelete}>
         <MdDeleteOutline className="size-5" />
       </button>
-    </div>
   );
 };
 

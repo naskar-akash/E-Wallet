@@ -24,10 +24,11 @@ const AddStudents = () => {
         data.school,
         data.feesamount,
         data.status,
-        data.notes
+        data.notes,
+        data.contact,
       );
       showAlert(response, "success", "error");
-      setOpen(!open); 
+      setOpen(!open);
     } catch (error) {
       showAlert(error.response || error, "success", "error");
     }
@@ -48,33 +49,35 @@ const AddStudents = () => {
       )}
 
       {/*add button*/}
-      <button onClick={() => setOpen(!open)} className="fixed right-10 top-8 text-3xl text-white">
+      <button
+        onClick={() => setOpen(!open)}
+        className="fixed right-10 top-8 text-3xl text-white"
+      >
         <IoMdPersonAdd />
       </button>
 
       {/*form*/}
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-40">
-        <form
-          className="flex flex-col w-[85vw] max-w-md bg-white px-4 py-2 sm:p-6 rounded-lg shadow-lg"
-          onSubmit={handleSubmit(onSubmit)}
-          method="post"
-        >
-          <div className="flex justify-end ">
-            <button
-              type="button"
-              className="p-2 text-2xl font-bold"
-              onClick={() => setOpen(!open)}
-            >
-              ×
-            </button>
-          </div>
-  
-            <div className="flex flex-col gap-2 mb-5">
-              <label className="mb-2 text-lg font-bold">Name:*</label>
+          <form
+            className="flex flex-col w-[85vw] max-w-md bg-white px-4 py-2 sm:p-6 rounded-lg shadow-lg"
+            onSubmit={handleSubmit(onSubmit)}
+            method="post"
+          >
+            <div className="flex justify-end ">
+              <button
+                type="button"
+                className="p-2 text-2xl font-bold"
+                onClick={() => setOpen(!open)}
+              >
+                ×
+              </button>
+            </div>
+
               <input
                 className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
                 type="text"
+                placeholder="Name---"
                 {...register("name", {
                   required: { value: true, message: "Name is required" },
                 })}
@@ -84,10 +87,9 @@ const AddStudents = () => {
                   {errors.name.message}
                 </div>
               )}
-            </div>
 
-            <div className="flex flex-col gap-2 mb-5">
-              <label className="mb-2 text-lg font-bold">Class:*</label>
+            <div className="flex flex-col gap-1 mb-2">
+              <label className="mb-1 text-lg font-semibold">Class:*</label>
               <select
                 className="bg-zinc-200 rounded-md p-1 outline-none"
                 {...register("stClass")}
@@ -100,24 +102,22 @@ const AddStudents = () => {
               </select>
             </div>
 
-          <div className="flex flex-col gap-2 mb-5">
-            <label className="mb-2 text-lg font-bold">School:*</label>
-            <input
-              className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
-              type="text"
-              {...register("school", {
-                required: { value: true, message: "School is required" },
-              })}
-            />
-            {errors.school && (
-              <div className="text-red-500 text-sm">
-                {errors.school.message}
-              </div>
-            )}
-          </div>
+              <input
+                className="px-3 py-2 bg-zinc-200 outline-none rounded-md mb-2"
+                type="text"
+                placeholder="School---"
+                {...register("school", {
+                  required: { value: true, message: "School is required" },
+                })}
+              />
+              {errors.school && (
+                <div className="text-red-500 text-sm">
+                  {errors.school.message}
+                </div>
+              )}
 
-            <div className="flex flex-col gap-2 mb-5">
-              <label className="mb-2 text-lg font-bold">Fees Amount:*</label>
+            <div className="flex justify-center gap-1 mb-2">
+              <label className="mb-1 text-lg font-semibold">Fees Amount:*</label>
               <input
                 className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
                 type="number"
@@ -132,8 +132,8 @@ const AddStudents = () => {
               )}
             </div>
 
-            <div className="flex flex-col gap-2 mb-5">
-              <label className="mb-2 text-lg font-bold">Status:</label>
+            <div className="flex justify-center gap-2 mb-2">
+              <label className="mb-1 text-lg font-semibold">Status:</label>
               <select
                 className="bg-zinc-200 rounded-md p-1 outline-none"
                 {...register("status")}
@@ -143,21 +143,33 @@ const AddStudents = () => {
               </select>
             </div>
 
-          <div className="flex flex-col gap-2 mb-5">
-            <label className="mb-2 text-lg font-bold">Special Notes:</label>
-            <input
-              className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
-              type="text"
-              {...register("notes")}
-            />
-          </div>
+              <input
+                className="px-3 py-2 bg-zinc-200 outline-none rounded-md mb-2"
+                type="text"
+                placeholder="Type some notes---"
+                {...register("notes")}
+              />
 
-          <input
-            className="px-3 py-2 mb-5 bg-blue-600 rounded-md text-white text-bold hover:cursor-pointer hover:bg-blue-500"
-            type="submit"
-            value="Add Student"
-          />
-        </form>
+            <div className="flex justify-center gap-2 mb-2">
+              <label className="mb-2 text-lg font-semibold">Contact:</label>
+              <input
+                className="px-3 py-2 bg-zinc-200 outline-none rounded-md"
+                type="text"
+                {...register("contact",{minlength:{value:10,message: "Enter a valid 10 digit phone no."}})}
+              />
+              {errors.contact && (
+                <div className="text-red-500 text-sm">
+                  {errors.contact.message}
+                </div>
+              )}
+            </div>
+
+            <input
+              className="px-3 py-2 mb-5 bg-blue-600 rounded-md text-white text-bold hover:cursor-pointer hover:bg-blue-500"
+              type="submit"
+              value="Add Student"
+            />
+          </form>
         </div>
       )}
     </div>

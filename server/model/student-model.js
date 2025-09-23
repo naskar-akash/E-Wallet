@@ -26,10 +26,20 @@ const studentSchema = new mongoose.Schema({
         type: String,
         default: 'none',
     },
+    contact:{
+        type: String,
+    },
     date:{
         type: String,
         default: () => dateTime().date,
     },
+    user: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
+      ],
 });
 
 module.exports = mongoose.model('Student', studentSchema);

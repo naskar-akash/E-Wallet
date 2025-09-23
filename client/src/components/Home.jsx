@@ -13,7 +13,7 @@ const Home = () => {
         Manage your students and fees with ease. Secure, fast, and beautiful.
       </p>
       <button
-        onClick={() => navigate("/Students")}
+        onClick={() => navigate("/user")}
         className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-pink-600 text-white text-2xl font-bold shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-glow"
       >
         Get Started
