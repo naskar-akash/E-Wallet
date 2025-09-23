@@ -13,12 +13,9 @@ module.exports.registerUser = async (req, res) => {
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res
-        .status(409)
-        .json({
-          message:
-            "User already exist, please login or try with another email!",
-        });
+      return res.status(409).json({
+        message: "User already exist, please login or try with another email!",
+      });
     }
     //Hashing the password
     bcrypt.genSalt(12, (err, salt) => {
@@ -26,7 +23,9 @@ module.exports.registerUser = async (req, res) => {
       bcrypt.hash(password, salt, async (err, hash) => {
         if (err) return res.status(400).json({ message: err.message });
         const user = await User.create({ name, email, password: hash });
-        res.status(200).json({ message: "user created successfully, please login!", user });
+        res
+          .status(200)
+          .json({ message: "user created successfully, please login!", user });
       });
     });
   } catch (error) {
@@ -42,15 +41,21 @@ module.exports.loginUser = async (req, res) => {
       res.status(400).json({ message: "All fields are required!" });
     }
     const user = await User.findOne({ email });
-    if(!user) return res.status(404).json({message: "Email or password incorrect!"});
+    if (!user)
+      return res.status(404).json({ message: "Email or password incorrect!" });
     bcrypt.compare(password, user.password, (err, result) => {
-      if (err) return res.status(400).json({ message: err.message }); 
-      if(result) {
+      if (err) return res.status(400).json({ message: err.message });
+      if (result) {
         const token = genToken(user);
-        res.cookie("token",token);
-        res.status(200).json({message: "Logging in!"});
+        res.cookie("token", token, {
+          httpOnly: true, // prevent JS access
+          secure: true, // cookie only over HTTPS
+          sameSite: "None", // required for cross-origin
+          maxAge: 24 * 60 * 60 * 1000, // 1 day
+        });
+        res.status(200).json({ message: "Logging in!" });
       } else {
-        res.status(404).json({message: "Email or password incorrect!"});
+        res.status(404).json({ message: "Email or password incorrect!" });
       }
     });
   } catch (error) {
@@ -59,11 +64,11 @@ module.exports.loginUser = async (req, res) => {
 };
 
 //Logout a user
-module.exports.logoutUser = async (req,res) => {
-    try {
-        res.cookie("token", "");
-        res.status(200).json({message: "Log out successfully!"});
-    } catch (error) {
-        res.status(500).json({message: error.message});
-    }
-}
+module.exports.logoutUser = async (req, res) => {
+  try {
+    res.cookie("token", "");
+    res.status(200).json({ message: "Log out successfully!" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
