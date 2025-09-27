@@ -51,7 +51,6 @@ module.exports.loginUser = async (req, res) => {
           httpOnly: true, // prevent JS access
           secure: true, // cookie only over HTTPS
           sameSite: "None", // required for cross-origin
-          domain: process.env.DOMAIN_NAME,
           maxAge: 24 * 60 * 60 * 1000, // 1 day
         });
        return res.status(200).json({ message: "Logging in!" });
