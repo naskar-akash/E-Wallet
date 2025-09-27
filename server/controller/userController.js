@@ -51,15 +51,16 @@ module.exports.loginUser = async (req, res) => {
           httpOnly: true, // prevent JS access
           secure: true, // cookie only over HTTPS
           sameSite: "None", // required for cross-origin
+          domain: process.env.DOMAIN_NAME,
           maxAge: 24 * 60 * 60 * 1000, // 1 day
         });
-        res.status(200).json({ message: "Logging in!" });
+       return res.status(200).json({ message: "Logging in!" });
       } else {
-        res.status(404).json({ message: "Email or password incorrect!" });
+       return res.status(404).json({ message: "Email or password incorrect!" });
       }
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+   return res.status(403).json({ message: error.message });
   }
 };
 
