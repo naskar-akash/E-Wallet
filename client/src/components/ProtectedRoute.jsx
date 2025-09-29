@@ -9,9 +9,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     async function checkUser() {
       try {
-        const response = await userProfile();
-        console.log(response);
-        
+        await userProfile();
         setIsAuth(true);
       } catch (error) {
         setIsAuth(false);
