@@ -129,3 +129,15 @@ export async function logoutUser() {
     throw error;
   }
 }
+
+//User Profile
+export async function userProfile() {
+  try {
+    const response = await axios.get(`${SERVER_URL}/user/profile`,{
+      withCredentials: true,
+    });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
