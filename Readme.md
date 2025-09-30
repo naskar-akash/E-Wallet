@@ -59,7 +59,7 @@ A full-stack application built with React(frontend) and NodeJS/Express/MongoDB (
 2. **Configure environment variables:**
    - Edit `.env` in the `client` folder:
      ```
-     VITE_API_URL=http://localhost:3000
+     VITE_API_URL=your_backend_url
      ```
 
 3. **Start the frontend dev server:**
@@ -69,3 +69,64 @@ A full-stack application built with React(frontend) and NodeJS/Express/MongoDB (
    The frontend runs on `http://localhost:5173` by default.
 
 ---
+
+## Usage
+- Register a new user and login
+- Add the details of your students
+- You can delete a student and update the student details
+- Filter by name of students and by payment status 
+- All actions show status messages for feedback
+
+---
+
+## Folder Structure
+
+```
+TodoAppNew/
+├── client/         # React frontend
+│   ├── src/
+│   │   ├── Components/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   └── .env
+├── server/         # Node.js/Express backend
+|   ├── config/
+|   ├── controller/
+|   ├── middleware/
+│   ├── model/
+│   ├── routes/
+│   ├── util/
+│   ├── app.js
+│   └── .env
+└── README.md
+```
+
+---
+
+## Api Endpoints
+
+- `POST/user/register` — Register new user
+- `POST/user/login` — Login registered user
+- `POST/user/logout` — Logout user
+- `GET/students/` — Get all students 
+- `GET/students/:id` — Get a student by id
+- `POST/students/create` — Adding a new student with details
+- `PUT/students/update/:id` — Update students
+- `DELETE/students/delete/:id` — Delete students
+
+---
+
+## Technologies used
+
+- **Frontend:** React, Tailwind CSS, Axios, React Router
+- **Backend:** Node.js, Express, MongoDB, Mongoose, JWT
+
+---
+
+## Preview
+
+If you want to show or use the app try the link `https://e-wallet-app-ky36.onrender.com`
+
+## Author
+
+Made by Akash Naskar
