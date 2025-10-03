@@ -1,5 +1,5 @@
 # E-WALLET
-A full-stack application built with React(frontend) and NodeJS/Express/MongoDB (Backend). This app is built mainly for _Tutors_ such that he/she can register, login, and set his students' detalits in this app. 
+A full-stack application built with React(frontend) and NodeJS/Express/MongoDB (Backend). This app is built mainly for _Tutors_ such that he/she can set the detalits of his/her students in this app. 
 
 ---
 
