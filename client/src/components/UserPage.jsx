@@ -56,22 +56,24 @@ const UserPage = () => {
         </div>
       )}
 
-      <div className="w-full flex justify-between items-center">
+      <div className="w-full flex flex-col justify-between items-center">
+        <h2 className="text-6xl font-bold mb-5 text-gray-100">Create User</h2>
+        <div className="w-full flex flex-row justify-between">
         <button
           className="hover:bg-emerald-600 p-2 bg-emerald-500 text-white rounded-md"
           onClick={() => navigate("/")}
         >
           Back
         </button>
-        <h2 className="text-6xl font-bold mb-5 text-gray-100">Create User</h2>
         <button
           className="hover:bg-purple-500 p-2 bg-violet-600 text-white rounded-md"
           onClick={handleStudents}
         >
           Students
         </button>
+        </div>
       </div>
-      <div className="flex w-full justify-center items-center gap-6 flex-row">
+      <div className="flex w-full justify-center items-center gap-4 flex-col sm:flex-row">
         <div className="min-h-[400px] p-2 flex flex-[0.8] flex-col items-center justify-center">
           <h2 className="mb-6 text-2xl font-bold text-blue-100">
             Register new user
