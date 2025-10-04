@@ -8,7 +8,6 @@ import { logoutUser } from "./Service";
 import AlertMsg from "./AlertMsg";
 
 const Students = () => {
-  const [isAuth, setIsAuth] = useState(null)
   const [students, setStudents] = useState([]);
   const [nameFilter, setNameFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
@@ -19,21 +18,11 @@ const Students = () => {
   const handleLogout = async () => {
     try {
       const response = await logoutUser();
-      setIsAuth(true);
       showAlert(response, "success", "error");
       navigate("/user");
     } catch (error) {
-      setIsAuth(false);
       showAlert(error.response || error, "success", "error");
     }
-
-    if (isAuth === null) 
-      return (
-      <div className="flex justify-center items-center text-gray-600 font-semibold text-2xl">
-        Loading...
-      </div>
-    );
-    return isAuth ? navigate("/user") : navigate("/students")
   };
 
   return (
