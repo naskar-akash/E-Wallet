@@ -126,6 +126,7 @@ TodoAppNew/
 ## Preview
 
 If you want to show or use the app try the link `https://e-wallet-app-ky36.onrender.com`
+- *Note: This app has been deployed through `https://render.com/`. Currently I have no paid plans on this platform. Maybe this have led to a problem that my cookies are not storing into the browser. But I don't have such kind of problem when I run this app locally.
 
 ## Author
 
